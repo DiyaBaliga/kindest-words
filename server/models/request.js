@@ -8,13 +8,13 @@ const RequestSchema = new Schema({
     required: [true, 'The content field is required'],
   },
   authorID: {
-    type: String,
+    type: Schema.Types.ObjectId,
     required: [true, 'The authorID field is required'], 
   },
   date: {
     type: String,
     required: [true, 'The date field is required'],
-  }
+  },
 });
 
 // Create model for Message
