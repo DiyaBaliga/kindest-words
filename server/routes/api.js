@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Todo = require('../models/todo');
-const Message = require('../models/message')
+const Request = require('../models/request')
 
 router.get('/todos', (req, res, next) => {
   // This will return all the data, exposing only the id and action field to the client
@@ -28,24 +28,26 @@ router.delete('/todos/:id', (req, res, next) => {
     .catch(next);
 });
 
-
-router.get('/message', (req, res, next) => {
-  // This will return all the data, exposing only the id and action field to the client
-  Message.find({}, 'message')
+// Get all requests
+router.get('/request', (req, res, next) => {
+  Request.find({}, 'request')
     .then((data) => res.json(data))
     .catch(next);
 });
 
-router.get('/message/:id', (req, res, next) => {
-  // This will return all the data, exposing only the id and action field to the client
-  Message.find({ _id: req.params.id }, 'message')
+// Get by request id
+router.get('/request/:id', (req, res, next) => {
+  Request.find({ _id: req.params.id }, 'request')
     .then((data) => res.json(data))
     .catch(next);
 });
 
-router.post('/message', (req, res, next) => {
-  if (req.body.Message) {
-    Message.create(req.body)
+// Post a request
+router.post('/request', (req, res, next) => {
+  console.log(req.body.Request);
+  console.log("test");
+  if (req.body.Request) {
+    Request.create(req.body)
       .then((data) => res.json(data))
       .catch(next);
   } else {
@@ -55,8 +57,9 @@ router.post('/message', (req, res, next) => {
   }
 });
 
-router.delete('/message/:id', (req, res, next) => {
-  Message.findOneAndDelete({ _id: req.params.id })
+// Delete a request by request id
+router.delete('/request/:id', (req, res, next) => {
+  Request.findOneAndDelete({ _id: req.params.id })
     .then((data) => res.json(data))
     .catch(next);
 });
