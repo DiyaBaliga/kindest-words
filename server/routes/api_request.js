@@ -43,11 +43,11 @@ router.delete('/request/:id', (req, res, next) => {
     .catch(next);
 });
 
-// // Delete requests by author id
-// router.delete('/request/:id', (req, res, next) => {
-//   Request.findOneAndDelete({ _id: req.params.id })
-//     .then((data) => res.json(data))
-//     .catch(next);
-// });
+// Delete requests by author id
+router.delete('/request/author/:author', (req, res, next) => {
+  Request.deleteMany({ authorID: req.params.author })
+    .then((data) => res.json(data))
+    .catch(next);
+});
 
 module.exports = router;
