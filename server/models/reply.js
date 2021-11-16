@@ -10,7 +10,7 @@ const reply = new Schema({
         required: [true, 'The text field is required.'],
     },
     authorID: {
-        type: Schema.Types.ObjectId,
+        type: String,
         required: [true, 'The message text field is required'],
     },
     date: {
