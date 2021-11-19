@@ -1,11 +1,18 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, {useEffect} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import RequestsView from './requestsView/requestsView';
+// import Orientation from 'react-native-orientation';
+
 
 export default function App() {
+  // useEffect(()=> {
+  //   Orientation.lockToLandscape();
+  // }, []);
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <RequestsView />
       <StatusBar style="auto" />
     </View>
   );
@@ -13,7 +20,6 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
