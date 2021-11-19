@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const routes = require('./routes/api');
+const requestRoutes = require('./routes/api_request');
 require('dotenv').config();
 
 const app = express();
@@ -26,6 +27,7 @@ app.use((req, res, next) => {
 app.use(bodyParser.json());
 
 app.use('/api', routes);
+app.use('/api', requestRoutes)
 
 app.use((err, req, res, next) => {
   console.log(err);
