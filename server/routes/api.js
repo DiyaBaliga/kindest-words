@@ -1,8 +1,8 @@
-const express = require('express');
+/*const express = require('express');
 const router = express.Router();
 const Todo = require('../models/todo');
 //const Request = require('../models/request');
-const Message = require('../models/message');
+//const Message = require('../models/message');
 const Reply = require('../models/reply');
 
 router.get('/message', (req, res, next) => {
@@ -65,4 +65,4 @@ router.delete('/reply', (req, res, next) => {
     .catch(next);
 });
 
-module.exports = router;
+module.exports = router;*/

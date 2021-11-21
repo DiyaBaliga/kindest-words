@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 // Create schema for Message
-const reply = new Schema({
+const replySchema = new Schema({
     content: {
         type: String,
         minlength: 1,
@@ -17,10 +17,9 @@ const reply = new Schema({
         type: String,
         required: true,
     },
-
 });
 
 // Create model for Message
-const Reply = mongoose.model('reply', reply);
+const Reply = mongoose.model('reply', replySchema);
 
 module.exports = Reply;
