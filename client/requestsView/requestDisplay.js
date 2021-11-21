@@ -5,7 +5,7 @@ export default function RequestDisplay({ content }) {
     const { width: windowWidth, height: windowHeight } = useWindowDimensions();
 
     return (
-        <View style={{width: windowWidth - 88, justifyContent: 'center', alignItems:'center'}}>
+        <View style={{width: windowWidth, justifyContent: 'center', alignItems:'center'}}>
             <View style={styles.paper}>
                 <Text style={styles.text}>{content}</Text>
             </View>

@@ -32,6 +32,6 @@ const styles = StyleSheet.create({
     button: {
         backgroundColor: '#f9e3ef',
         borderRadius: 4,
-        width: "40%",
+        width: "80%",
     }
 });

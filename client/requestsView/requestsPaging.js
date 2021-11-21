@@ -3,7 +3,7 @@ import { ScrollView, StyleSheet, Animated, View, useWindowDimensions } from 'rea
 import RequestDisplay from "./requestDisplay";
 import data from './sampleRequestObjects.json';
 
-export default function RequestsPaging() {
+export default function RequestsPaging({content}) {
     const scrollX = useRef(new Animated.Value(0)).current;
     const { width: windowWidth, height: windowHeight } = useWindowDimensions();
 
