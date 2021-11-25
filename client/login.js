@@ -10,15 +10,37 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-export default function Login() {
+const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const [errorText, setErrorText] = useState("");
+  const initiateLogin = () =>{
+    fetch("http://localhost:3000/api/login", {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({username: email, password: password})
+    })
+    .then((response) => response.json())
+    .then((data) => {
+      if(data.error){
+        setErrorText(data.error);
+      }
+      else if(data.user){
+        setErrorText("Congrats");
+      }
+    })
+  }
   return (
     <View style={styles.container}>
-      <Image style={styles.image} source={require("./assets/kindest_words.png")}/>
+      {/* <Image style={styles.image} source={require("./assets/kindest_words.png")}/> */}
 
       <StatusBar style="auto" />
+      <Text>
+        {errorText}
+      </Text>
       <View style={styles.inputView}>
         <TextInput
           style={styles.TextInputEmail}
@@ -42,7 +64,7 @@ export default function Login() {
         <Text style={styles.forgot_button}>Forgot Password?</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.loginBtn}>
+      <TouchableOpacity style={styles.loginBtn} onPress={initiateLogin}>
         <Text style={styles.loginText}>LOGIN</Text>
       </TouchableOpacity>
     </View>
@@ -106,3 +128,4 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
 });
+export default Login;
