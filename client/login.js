@@ -9,8 +9,9 @@ import {
   Button,
   TouchableOpacity,
 } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
 
-export default function Login() {
+export default function Login({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -44,6 +45,10 @@ export default function Login() {
 
       <TouchableOpacity style={styles.loginBtn}>
         <Text style={styles.loginText}>LOGIN</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={() => navigation.navigate('Register')}>
+        <Text style={styles.createAccount}>Create an account</Text>
       </TouchableOpacity>
     </View>
   );
@@ -105,4 +110,10 @@ const styles = StyleSheet.create({
     marginTop: 40,
     backgroundColor: "#fff",
   },
+
+  createAccount: {
+    height: 30,
+    bottom: -20,
+    color: '#fff',
+  }
 });
