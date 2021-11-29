@@ -9,8 +9,9 @@ import {
   Button,
   TouchableOpacity,
 } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
 
-const Login = () => {
+export default function Login({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorText, setErrorText] = useState("");
@@ -35,7 +36,7 @@ const Login = () => {
   }
   return (
     <View style={styles.container}>
-      {/* <Image style={styles.image} source={require("./assets/kindest_words.png")}/> */}
+      {<Image style={styles.image} source={require("./assets/kindest_words.png")}/>}
 
       <StatusBar style="auto" />
       <Text>
@@ -66,6 +67,10 @@ const Login = () => {
 
       <TouchableOpacity style={styles.loginBtn} onPress={initiateLogin}>
         <Text style={styles.loginText}>LOGIN</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={() => navigation.navigate('Register')}>
+        <Text style={styles.createAccount}>Create an account</Text>
       </TouchableOpacity>
     </View>
   );
@@ -128,4 +133,3 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
 });
-export default Login;

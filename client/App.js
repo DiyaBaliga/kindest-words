@@ -1,8 +1,21 @@
-import React from "react";
-import Login from "./login";
+import { StatusBar } from 'expo-status-bar';
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import Login from './login';
+import Regform from './Regform';
 
 export default function App() {
   return (
-    <Login />
+    <View style={styles.container}>
+      <Login />
+    </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    backgroundColor: '#0092ca',
+  }
+});
