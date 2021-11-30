@@ -15,6 +15,11 @@ export default function Login({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorText, setErrorText] = useState("");
+
+  const pressHandler = () => {
+    navigation.navigate('Regform');
+  }
+
   const initiateLogin = () =>{
     fetch("http://localhost:3000/api/login", {
       method: 'POST',
@@ -69,7 +74,7 @@ export default function Login({ navigation }) {
         <Text style={styles.loginText}>LOGIN</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => navigation.navigate('Register')}>
+      <TouchableOpacity onPress={pressHandler}>
         <Text style={styles.createAccount}>Create an account</Text>
       </TouchableOpacity>
     </View>
@@ -132,4 +137,10 @@ const styles = StyleSheet.create({
     marginTop: 40,
     backgroundColor: "#fff",
   },
+
+  createAccount: {
+    height: 30,
+    bottom: -20,
+    color: '#fff',
+  }
 });
