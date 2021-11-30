@@ -10,13 +10,18 @@ const replySchema = new Schema({
         required: [true, 'The text field is required.'],
     },
     authorID: {
-        type: String,
+        type: Schema.Types.ObjectId,
         required: [true, 'The message text field is required'],
     },
     date: {
         type: String,
         required: true,
     },
+    requestID: {
+        type: Schema.Types.ObjectId,
+        required: true,
+        ref: "Request"
+    }
 });
 
 // Create model for Message
