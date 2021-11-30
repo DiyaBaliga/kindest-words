@@ -17,6 +17,9 @@ const RequestSchema = new Schema({
   },
 });
 
+// Indexing for searching content later
+RequestSchema.index({content: "text"})
+
 // Create model for Message
 const Request = mongoose.model('request', RequestSchema);
 
