@@ -17,6 +17,7 @@ export default function Login({ navigation }) {
   const [errorText, setErrorText] = useState("");
 
   const pressHandler = () => {
+    
     navigation.navigate('Regform');
   }
 

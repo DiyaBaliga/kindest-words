@@ -30,9 +30,20 @@ router.delete('/todos/:id', (req, res, next) => {
 
 router.post('/register', (req, res, next) => {
   if (req.body.username && req.body.password) {
-    User.create(req.body)
-      .then((data) => res.json(data))
-      .catch(next);
+    User.find({ username: req.body.username })
+    .then(user => {
+      if(user.length > 0){
+        res.json({
+          error: 'Username already exists'
+        });
+      }
+      else{
+        User.create(req.body)
+          .then((data) => res.json(data))
+          .catch(next);
+      }
+    })
+    .catch(next);
   } else {
     res.json({
       error: 'Missing username/password',
