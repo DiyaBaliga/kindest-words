@@ -17,7 +17,8 @@ export default function Login({ navigation }) {
   const [errorText, setErrorText] = useState("");
 
   const pressHandler = () => {
-    
+    setEmail("");
+    setPassword("");
     navigation.navigate('Regform');
   }
 
@@ -54,6 +55,7 @@ export default function Login({ navigation }) {
           placeholder="Email"
           placeholderTextColor="#fff"
           onChangeText={(email) => setEmail(email)}
+          value={email}
         />
       </View>
 
@@ -64,6 +66,7 @@ export default function Login({ navigation }) {
           placeholderTextColor="#fff"
           secureTextEntry={true}
           onChangeText={(password) => setPassword(password)}
+          value={password}
         />
       </View>
 
