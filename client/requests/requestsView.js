@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
+        flex: 1,
     },
     scroll: {
         flex:1,

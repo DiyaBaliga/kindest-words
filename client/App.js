@@ -1,15 +1,36 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useEffect} from 'react';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 import { StyleSheet, Text, View } from 'react-native';
-import RequestsView from './requestsView/requestsView';
+import { RequestsView } from './requests';
+import { HomeScreen } from './homeScreen';
+
+const AppNavigator = createStackNavigator(
+  {
+    Home: {
+      screen: HomeScreen,
+    },
+    Requests: {
+      screen: RequestsView,
+    }
+  },
+  {
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: "#d87dac",
+      },
+      headerTintColor: "#FFF",
+    },
+  }
+);
+
+const Navigator = createAppContainer(AppNavigator);
 
 export default function App() {
 
   return (
-    <View style={styles.container}>
-      <RequestsView />
-      <StatusBar style="auto" />
-    </View>
+    <Navigator/>
   );
 }
 
