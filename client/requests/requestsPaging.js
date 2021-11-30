@@ -1,7 +1,6 @@
-import React, {useRef} from 'react';
-import { ScrollView, StyleSheet, Animated, View, useWindowDimensions } from 'react-native';
+import React, {useEffect, useRef} from 'react';
+import { ScrollView, StyleSheet, Animated, View, useWindowDimensions, Text } from 'react-native';
 import RequestDisplay from "./requestDisplay";
-import data from './sampleRequestObjects.json';
 
 export default function RequestsPaging({content}) {
     const scrollX = useRef(new Animated.Value(0)).current;
@@ -26,11 +25,12 @@ export default function RequestsPaging({content}) {
             )}
             scrollEventThrottle={1}
             >
-        {data.requestStream.map((request) => {
+        {content.map((request) => {
             return(
                 <RequestDisplay content={request.content} key={request._id} />
             )
-        })}
+            })
+        }
         </ScrollView>
     );
 }

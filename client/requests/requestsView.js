@@ -2,14 +2,21 @@ import React, {useState, useEffect} from 'react';
 import { View, SafeAreaView, StyleSheet, useWindowDimensions } from 'react-native';
 import RequestsPaging from './requestsPaging';
 import RequestsButtonRow from './requestsButtonRow';
+import axios from 'axios';
+import {SERVER_URL} from '../ip'
 
 export default function RequestsView() {
     const [allRequests, setAllRequests] = useState([]);
 
     useEffect(()=> {
-        var temp = [];
-        //insert pull of requests here
-        setAllRequests(temp);
+        axios
+        .get(SERVER_URL + '/api/request/')
+        .then((res) => {
+          if (res.data) {
+            setAllRequests(res.data);
+          }
+        })
+        .catch((err) => console.log(err));
     }, []);
 
     return (
