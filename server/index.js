@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-//const routes = require('./routes/api');
+const loginRoutes = require('./routes/api_login');
 const requestRoutes = require('./routes/api_request');
 const replyRoutes = require('./routes/api_reply');
 require('dotenv').config();
@@ -27,7 +27,7 @@ app.use((req, res, next) => {
 
 app.use(bodyParser.json());
 
-//app.use('/api', routes);
+app.use('/api', loginRoutes);
 app.use('/api', requestRoutes);
 app.use('/api', replyRoutes);
 
