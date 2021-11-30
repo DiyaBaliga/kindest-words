@@ -3,6 +3,9 @@ import React, {useEffect} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import RequestsView from './requestsView/requestsView';
 import ReplyCreation from './replyCreate/replyCreation.js';
+import Login from './login';
+import Regform from './Regform';
+import Navigator from './routes/Stack';
 
 export default function App() {
 
@@ -11,13 +14,14 @@ export default function App() {
       <ReplyCreation />
       <StatusBar style="auto" />
     </View>
+    // <Navigator/>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#fff',
-    alignItems: 'center',
+    flex: 1,
     justifyContent: 'center',
-  },
+    backgroundColor: '#0092ca',
+  }
 });

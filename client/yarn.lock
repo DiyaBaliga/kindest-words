@@ -2444,50 +2444,50 @@
   "version" "13.0.3"
   dependencies:
     "@expo/config-plugins" "^4.0.2"
-    "expo-modules-core" "~0.4.4"
-    "uuid" "^3.4.0"
+    expo-modules-core "~0.4.4"
+    uuid "^3.4.0"
 
-"expo-font@~10.0.3":
-  "integrity" "sha512-xM5oqIduGvJ+qbsZHjMNNt+3hhjOMTunHUtOx5rAmW/D1ZVdfLwjDwOyWBVkH8ChoBRAZy9gsC2cRs7naw8NIw=="
-  "resolved" "https://registry.npmjs.org/expo-font/-/expo-font-10.0.3.tgz"
-  "version" "10.0.3"
+expo-font@~10.0.3:
+  version "10.0.3"
+  resolved "https://registry.yarnpkg.com/expo-font/-/expo-font-10.0.3.tgz#655817f3e62f39bc906adda4c3a2fec052ef040a"
+  integrity sha512-xM5oqIduGvJ+qbsZHjMNNt+3hhjOMTunHUtOx5rAmW/D1ZVdfLwjDwOyWBVkH8ChoBRAZy9gsC2cRs7naw8NIw==
   dependencies:
-    "expo-modules-core" "~0.4.4"
-    "fontfaceobserver" "^2.1.0"
+    expo-modules-core "~0.4.4"
+    fontfaceobserver "^2.1.0"
 
-"expo-keep-awake@~10.0.0":
-  "integrity" "sha512-x5zRTjIvSry/EISKvjWpnLERGZj5maCwEouOfiDk0JPa0UTg/zFkT7pmiadAfHT95XUgjjb2DOku+wj6J7el7Q=="
-  "resolved" "https://registry.npmjs.org/expo-keep-awake/-/expo-keep-awake-10.0.0.tgz"
-  "version" "10.0.0"
+expo-keep-awake@~10.0.0:
+  version "10.0.0"
+  resolved "https://registry.yarnpkg.com/expo-keep-awake/-/expo-keep-awake-10.0.0.tgz#275a3e02f99bc0429790047add126c1dcce60d63"
+  integrity sha512-x5zRTjIvSry/EISKvjWpnLERGZj5maCwEouOfiDk0JPa0UTg/zFkT7pmiadAfHT95XUgjjb2DOku+wj6J7el7Q==
 
-"expo-modules-autolinking@~0.3.3":
-  "integrity" "sha512-hMouDBw/Y5POeYU0ZBsykGC+uiOO1WV0JSz5EE8uO87AlXAzR0K5aPkzgQiufONNwwgxsaD2xUV/J+tjwMw2Ug=="
-  "resolved" "https://registry.npmjs.org/expo-modules-autolinking/-/expo-modules-autolinking-0.3.3.tgz"
-  "version" "0.3.3"
+expo-modules-autolinking@~0.3.3:
+  version "0.3.3"
+  resolved "https://registry.yarnpkg.com/expo-modules-autolinking/-/expo-modules-autolinking-0.3.3.tgz#95795f2292bd187b388413e36936bfd6fa7a46a9"
+  integrity sha512-hMouDBw/Y5POeYU0ZBsykGC+uiOO1WV0JSz5EE8uO87AlXAzR0K5aPkzgQiufONNwwgxsaD2xUV/J+tjwMw2Ug==
   dependencies:
-    "chalk" "^4.1.0"
-    "commander" "^7.2.0"
-    "fast-glob" "^3.2.5"
-    "find-up" "~5.0.0"
-    "fs-extra" "^9.1.0"
+    chalk "^4.1.0"
+    commander "^7.2.0"
+    fast-glob "^3.2.5"
+    find-up "~5.0.0"
+    fs-extra "^9.1.0"
 
-"expo-modules-core@~0.4.4", "expo-modules-core@~0.4.5":
-  "integrity" "sha512-boEbB3tAYO7WkgcaXToQLY8IUeEGOZeDF+StTL38FA0l8jzJwwQLU7TaWjWEMGfxvvn7KP7V7kFudJKc7dak3g=="
-  "resolved" "https://registry.npmjs.org/expo-modules-core/-/expo-modules-core-0.4.7.tgz"
-  "version" "0.4.7"
+expo-modules-core@~0.4.4, expo-modules-core@~0.4.5:
+  version "0.4.7"
+  resolved "https://registry.yarnpkg.com/expo-modules-core/-/expo-modules-core-0.4.7.tgz#1ea4de95bb4ac1ee125efe50b6f25055c36d86c6"
+  integrity sha512-boEbB3tAYO7WkgcaXToQLY8IUeEGOZeDF+StTL38FA0l8jzJwwQLU7TaWjWEMGfxvvn7KP7V7kFudJKc7dak3g==
   dependencies:
-    "compare-versions" "^3.4.0"
-    "invariant" "^2.2.4"
+    compare-versions "^3.4.0"
+    invariant "^2.2.4"
 
-"expo-status-bar@~1.1.0":
-  "integrity" "sha512-XgAbGfDV/Q6br2h4yzQwcZRYi37bZ/nvc06vvaJ7i7w9tRxb05OJmXBxl7ywkKlFCMcN6q3Miaf2wnzEgMwJoQ=="
-  "resolved" "https://registry.npmjs.org/expo-status-bar/-/expo-status-bar-1.1.0.tgz"
-  "version" "1.1.0"
+expo-status-bar@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/expo-status-bar/-/expo-status-bar-1.1.0.tgz#b1015a69c8563b7cadcb5b6c726227397610725d"
+  integrity sha512-XgAbGfDV/Q6br2h4yzQwcZRYi37bZ/nvc06vvaJ7i7w9tRxb05OJmXBxl7ywkKlFCMcN6q3Miaf2wnzEgMwJoQ==
 
-"expo@~43.0.0":
-  "integrity" "sha512-1F98CftAvTDNQPkhTSSYpcr5eiw/R0op3RXcV5GkJBTw67FvZ6JI+CsQ5iu2FICKnE51WKjH2y26V7+cjXboIg=="
-  "resolved" "https://registry.npmjs.org/expo/-/expo-43.0.1.tgz"
-  "version" "43.0.1"
+expo@~43.0.0:
+  version "43.0.1"
+  resolved "https://registry.yarnpkg.com/expo/-/expo-43.0.1.tgz#accd4998846e5d3c7ea743c7cf333ce918af150a"
+  integrity sha512-1F98CftAvTDNQPkhTSSYpcr5eiw/R0op3RXcV5GkJBTw67FvZ6JI+CsQ5iu2FICKnE51WKjH2y26V7+cjXboIg==
   dependencies:
     "@babel/runtime" "^7.14.0"
     "@expo/metro-config" "~0.1.84"
