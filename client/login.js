@@ -12,13 +12,14 @@ import {
 import { NavigationContainer } from "@react-navigation/native";
 
 export default function Login({ navigation }) {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorText, setErrorText] = useState("");
 
   const pressHandler = () => {
-    setEmail("");
+    setUsername("");
     setPassword("");
+    setErrorText("");
     navigation.navigate('Regform');
   }
 
@@ -29,7 +30,7 @@ export default function Login({ navigation }) {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({username: email, password: password})
+      body: JSON.stringify({username: username, password: password})
     })
     .then((response) => response.json())
     .then((data) => {
@@ -46,16 +47,14 @@ export default function Login({ navigation }) {
       {<Image style={styles.image} source={require("./assets/kindest_words.png")}/>}
 
       <StatusBar style="auto" />
-      <Text>
-        {errorText}
-      </Text>
+      <Text style={styles.errorDisplay}> {errorText} </Text>
       <View style={styles.inputView}>
         <TextInput
-          style={styles.TextInputEmail}
-          placeholder="Email"
+          style={styles.TextInputUsername}
+          placeholder="Username"
           placeholderTextColor="#fff"
-          onChangeText={(email) => setEmail(email)}
-          value={email}
+          onChangeText={(username) => setUsername(username)}
+          value={username}
         />
       </View>
 
@@ -69,10 +68,6 @@ export default function Login({ navigation }) {
           value={password}
         />
       </View>
-
-      <TouchableOpacity>
-        <Text style={styles.forgot_button}>Forgot Password?</Text>
-      </TouchableOpacity>
 
       <TouchableOpacity style={styles.loginBtn} onPress={initiateLogin}>
         <Text style={styles.loginText}>LOGIN</Text>
@@ -94,7 +89,7 @@ const styles = StyleSheet.create({
   },
 
   image: {
-    marginBottom: 40,
+    marginBottom: 10,
     marginTop: -50,
     width: 350,
     height: 300
@@ -110,7 +105,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 
-  TextInputEmail: {
+  TextInputUsername: {
     height: 50,
     width: 300,
     textAlign: "center",
@@ -124,12 +119,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
     flex: 1,
     marginLeft: 5
-  },
-
-  forgot_button: {
-    height: 30,
-    marginBottom: 30,
-    color: "#fff"
   },
 
   loginBtn: {
@@ -146,5 +135,11 @@ const styles = StyleSheet.create({
     height: 30,
     bottom: -20,
     color: '#fff',
+  },
+
+  errorDisplay: {
+    height: 30,
+    justifyContent: "center",
+    color: '#ff0000'
   }
 });

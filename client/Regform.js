@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 
 export default function Regform({ navigation }) {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorText, setErrorText] = useState("");
   
@@ -18,7 +18,7 @@ export default function Regform({ navigation }) {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({username: email, password: password})
+      body: JSON.stringify({username: username, password: password})
     })
     .then((response) => response.json())
     .then((data) => {
@@ -33,18 +33,16 @@ export default function Regform({ navigation }) {
   return (
     <View style={styles.regform}>
       <View  style={styles.header}>
-        <Text style={[{color: '#fff', fontSize: 24}]}>Registration</Text>
+        <Text style={[{color: '#fff', fontSize: 24}]}>Create an Account</Text>
         </View>
-        <Text>
-          {errorText}
-        </Text>
+        <Text style={styles.errorDisplay}> {errorText} </Text>
         <TextInput 
           style={styles.textinput} 
           placeholder='Username' 
           placeholderTextColor='#fff'
-          onChangeText={(email) => setEmail(email)}
+          onChangeText={(username) => setUsername(username)}
           />
-        {/* <TextInput style={styles.textinput} placeholder='Email' placeholderTextColor='#fff'/> */}
+        {/* <TextInput style={styles.textinput} placeholder='Username' placeholderTextColor='#fff'/> */}
         <TextInput 
           style={styles.textinput} 
           placeholder='Password' 
@@ -72,7 +70,7 @@ const styles = StyleSheet.create({
   
   header: {
     paddingBottom: 10,
-    marginBottom: 40,
+    marginBottom: 10,
     borderBottomColor: '#fff',
     borderBottomWidth: 1,
   },
@@ -104,5 +102,11 @@ const styles = StyleSheet.create({
     height: 30,
     bottom: -20,
     color: '#fff',
+  },
+  
+  errorDisplay: {
+    height: 30,
+    justifyContent: "center",
+    color: '#ff0000'
   }
 });
