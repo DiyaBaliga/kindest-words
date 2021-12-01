@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, useWindowDimensions, TextInput, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import { StyleSheet, View, SafeAreaView, useWindowDimensions, TextInput, TouchableWithoutFeedback, Keyboard, TouchableOpacity, Text } from 'react-native';
+import axios from 'axios';
+import {SERVER_URL} from '../ip'
 
 export default function ReplyCreation({route}) {
     const { width: windowWidth, height: windowHeight } = useWindowDimensions();
@@ -25,17 +27,32 @@ export default function ReplyCreation({route}) {
 
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-            <View style={{width: windowWidth, justifyContent: 'center', alignItems:'center'}}>
+                    {/* Text Input Area */}
+            <SafeAreaView style={{width: windowWidth, justifyContent: 'center', alignItems:'center'}}>
                 <View style={styles.paper}>
                     <TextInput
                         multiline
                         style={styles.input}
-                        onChangeText={onChangeContent}
+                        onChangeText={setContent}
                         value={content}
                     />
                 </View>
-            </View>
+
+                        {/* Bottom button */}
+                <View style={styles.container}>
+                    <TouchableOpacity 
+                        style={styles.button}
+                        onPress={postReply}
+                    >
+                        <Text style={styles.buttonText}>
+                            Send
+                        </Text>
+                    </TouchableOpacity>
+                </View>
+
+            </SafeAreaView>
         </TouchableWithoutFeedback>
+
     );
 }
 
@@ -44,9 +61,9 @@ const styles = StyleSheet.create({
       backgroundColor: '#fce8f4',
       padding: 20,
       borderRadius: 10,
-      height: '90%',
+      height: '87%',
       width: '80%',
-      
+      margin: 20,
     },
     input: {
         width: '100%',
@@ -54,8 +71,26 @@ const styles = StyleSheet.create({
         padding: 10,
         paddingTop: 0,
         paddingBottom: 0,
-        borderWidth: 1,
         fontSize: 20,
         color: '#d87dac',
     },
+    container:{
+        justifyContent: "center",
+        alignContent: "center",
+        alignItems: "center",
+        paddingTop: 10,
+        width: '100%',
+    },
+    buttonText: {
+        fontSize: 20,
+        fontWeight: "500",
+        padding: 5,
+        color: "#d87dac",
+        textAlign: "center",
+    },
+    button: {
+        backgroundColor: '#f9e3ef',
+        borderRadius: 4,
+        width: "80%",
+    }
 });

@@ -1,9 +1,11 @@
 import React, {useEffect} from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { NavigationContainer } from "@react-navigation/native";
 
-export default function RequestsButtonRow({ request }) {
+
+export default function RequestsButtonRow({navigation}) {
     const handleClick = () => {
-        navigation.navigate('WriteReplies', {isReply: true, requestID: {request}});
+        navigation.navigate("WriteReplies");
     }
     
     return (
@@ -16,6 +18,13 @@ export default function RequestsButtonRow({ request }) {
                     Reply
                 </Text>
             </TouchableOpacity>
+            <TouchableOpacity 
+                style={styles.button}
+            >
+                <Text style={styles.buttonText}>
+                    Report
+                </Text>
+            </TouchableOpacity>
         </View>
     );
 }
@@ -26,6 +35,8 @@ const styles = StyleSheet.create({
         alignContent: "center",
         alignItems: "center",
         paddingTop: 10,
+        flexDirection: 'row',
+        marginBottom: 10,
     },
     buttonText: {
         fontSize: 20,
@@ -37,6 +48,7 @@ const styles = StyleSheet.create({
     button: {
         backgroundColor: '#f9e3ef',
         borderRadius: 4,
-        width: "80%",
-    }
+        margin: 10,
+        width: '42%',
+    },
 });

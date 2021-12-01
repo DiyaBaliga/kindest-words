@@ -3,8 +3,11 @@ import { ScrollView, StyleSheet, Animated, View, useWindowDimensions, Text } fro
 import RequestDisplay from "./requestDisplay";
 
 export default function RequestsPaging({content}) {
-    const scrollX = useRef(new Animated.Value(0)).current;
-    const { width: windowWidth, height: windowHeight } = useWindowDimensions();
+    const scrollX = useRef(new Animated.Value(0).addListener(callback));
+
+    const callback = (value) => {
+        console.log(value);
+    }
 
     return (
         <ScrollView
@@ -13,13 +16,13 @@ export default function RequestsPaging({content}) {
             showsHorizontalScrollIndicator={false}
             onScroll={() => Animated.event(
                 [
-                {
-                nativeEvent: {
-                    contentOffset: {
-                    x: scrollX
+                    {
+                        nativeEvent: {
+                            contentOffset: {
+                            x: scrollX.current
+                            }
+                        }
                     }
-                }
-                }
                 ],
                 {useNativeDriver: true}
             )}
