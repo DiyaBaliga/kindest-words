@@ -17,7 +17,7 @@ export default function HomeScreen({navigation}) {
             />
             <Button
                 title="Make Request"
-                onPress={()=> navigation.navigate("WriteRequests", {params:  { user: ''}})}
+                onPress={()=> navigation.navigate("WriteRequests", {isReply :false})}
             />
         </View>
     );

@@ -30,9 +30,11 @@ const AppNavigator = createStackNavigator(
     },
     WriteReplies: {
       screen: ReplyCreation,
+      // params: {isReply: true}
     },
     WriteRequests: {
       screen: ReplyCreation,
+      // params: {isReply: false}
     },
   },
   {

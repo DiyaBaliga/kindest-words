@@ -5,7 +5,7 @@ import { NavigationContainer } from "@react-navigation/native";
 
 export default function RequestsButtonRow({navigation}) {
     const handleClick = () => {
-        navigation.navigate("WriteReplies");
+        navigation.navigate("WriteReplies", {isReply :false});
     }
     
     return (

@@ -3,26 +3,27 @@ import { StyleSheet, View, SafeAreaView, useWindowDimensions, TextInput, Touchab
 import axios from 'axios';
 import {SERVER_URL} from '../ip'
 
-export default function ReplyCreation({route}) {
+export default function ReplyCreation({ navigation }) {
     const { width: windowWidth, height: windowHeight } = useWindowDimensions();
     const [content, setContent] = useState(null);
-    const { isReply, requestID } = route.params;
+    const { isReply } = navigation.state.params;
 
 
     const postReply = () => {    
-        axios.post(SERVER_URL + '/api/reply/', {
-            content: content,
-            authorID: '6191825f72d3e52a83b89521',
-            date: '-',
-            requestID: '61a32192144b0646fbc3e07a'
-          })
-          .then(function (response) {
-            // clear content after it's submitted
-            setContent("");
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
+        console.log(navigation.getParam('isReply'));
+        // axios.post(SERVER_URL + '/api/reply/', {
+        //     content: content,
+        //     authorID: '6191825f72d3e52a83b89521',
+        //     date: '-',
+        //     requestID: '61a32192144b0646fbc3e07a'
+        //   })
+        //   .then(function (response) {
+        //     // clear content after it's submitted
+        //     setContent("");
+        //   })
+        //   .catch(function (error) {
+        //     console.log(error);
+        //   });
     }
 
     return (
