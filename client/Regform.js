@@ -102,6 +102,7 @@ const styles = StyleSheet.create({
     height: 30,
     bottom: -20,
     color: '#fff',
+    alignSelf: 'center'
   },
   
   errorDisplay: {

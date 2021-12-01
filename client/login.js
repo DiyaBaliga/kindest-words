@@ -8,6 +8,7 @@ import {
   TextInput,
   Button,
   TouchableOpacity,
+  KeyboardAvoidingView
 } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 
@@ -42,8 +43,9 @@ export default function Login({ navigation }) {
       }
     })
   }
+  
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === "ios" ? "padding" : "height"}>
       {<Image style={styles.image} source={require("./assets/kindest_words.png")}/>}
 
       <StatusBar style="auto" />
@@ -76,7 +78,7 @@ export default function Login({ navigation }) {
       <TouchableOpacity onPress={pressHandler}>
         <Text style={styles.createAccount}>Create an account</Text>
       </TouchableOpacity>
-    </View>
+    </KeyboardAvoidingView>
   );
 }
 
