@@ -29,7 +29,7 @@ export default function RequestsView({navigation}) {
                     setDisplayItem={setDisplayItem}
                 />
                 <RequestsButtonRow
-                    requestID={content[displayItem]._id}
+                    request={allRequests[displayItem] ? allRequests[displayItem]._id : null}
                     navigation={navigation}
                 />
             </SafeAreaView>

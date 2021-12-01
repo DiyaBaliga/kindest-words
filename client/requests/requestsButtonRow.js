@@ -1,13 +1,13 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { NavigationContainer } from "@react-navigation/native";
 
 
-export default function RequestsButtonRow({navigation}) {
+export default function RequestsButtonRow({ request }) {
     const handleClick = () => {
-        navigation.navigate("WriteReplies");
+        navigation.navigate('WriteReplies', {isReply: true, requestID: {request}});
     }
-
+    
     return (
         <View style={styles.container}>
             <TouchableOpacity 

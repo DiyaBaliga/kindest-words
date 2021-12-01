@@ -6,7 +6,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { RequestsView } from './requests';
 import { HomeScreen } from './homeScreen';
 import { Login, Regform } from './login';
-import ReplyCreation, { replyCreation } from './replyCreate/replyCreation';
+import ReplyCreation from './replyCreate/replyCreation';
 
 const AppNavigator = createStackNavigator(
   {

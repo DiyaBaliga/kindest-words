@@ -3,10 +3,11 @@ import { StyleSheet, View, SafeAreaView, useWindowDimensions, TextInput, Touchab
 import axios from 'axios';
 import {SERVER_URL} from '../ip'
 
-export default function ReplyCreation() {
+export default function ReplyCreation({route}) {
     const { width: windowWidth, height: windowHeight } = useWindowDimensions();
     const [content, setContent] = useState(null);
-    // const {state} = props.navigation;
+    const { isReply, requestID } = route.params;
+
 
     const postReply = () => {    
         axios.post(SERVER_URL + '/api/reply/', {

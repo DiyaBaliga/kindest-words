@@ -17,7 +17,11 @@ export default function HomeScreen({navigation}) {
             />
             <Button
                 title="Make Request"
+<<<<<<< Updated upstream
                 onPress={()=> navigation.navigate("ReplyCreation")}
+=======
+                onPress={()=> navigation.navigate("WriteRequests", {params:  { user: ''}})}
+>>>>>>> Stashed changes
             />
         </View>
     );
