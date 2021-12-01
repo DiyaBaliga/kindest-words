@@ -10,7 +10,8 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-import { SERVER_URL } from "../ip";
+import {SERVER_URL} from "./ip.js";
+
 
 export default function Login({ navigation }) {
   const [username, setUsername] = useState("");
@@ -25,7 +26,7 @@ export default function Login({ navigation }) {
   }
 
   const initiateLogin = () =>{
-    fetch(SERVER_URL, {
+    fetch(SERVER_URL + "/api/login", {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
