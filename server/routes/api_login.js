@@ -63,7 +63,7 @@ router.post('/login', (req, res, next) => {
   }
  }); 
 
-router.post('/login/report/:id', (req, res, next) => {
+router.post('/report/:id', (req, res, next) => {
   User.find({ _id: req.params.id })
     .then(user => {
       user[0].flagged = true;
