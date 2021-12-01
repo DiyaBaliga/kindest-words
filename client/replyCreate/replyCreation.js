@@ -1,9 +1,27 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, useWindowDimensions, TextInput, TouchableWithoutFeedback, Keyboard } from 'react-native';
 
-export default function ReplyCreation() {
+export default function ReplyCreation({route}) {
     const { width: windowWidth, height: windowHeight } = useWindowDimensions();
-    const [content, onChangeContent] = useState(null);
+    const [content, setContent] = useState(null);
+    const { isReply, requestID } = route.params;
+
+
+    const postReply = () => {    
+        axios.post(SERVER_URL + '/api/reply/', {
+            content: content,
+            authorID: '6191825f72d3e52a83b89521',
+            date: '-',
+            requestID: '61a32192144b0646fbc3e07a'
+          })
+          .then(function (response) {
+            // clear content after it's submitted
+            setContent("");
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+    }
 
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
