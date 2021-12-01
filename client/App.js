@@ -6,6 +6,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { RequestsView } from './requests';
 import { HomeScreen } from './homeScreen';
 import { Login, Regform } from './login';
+import ReplyCreation, { replyCreation } from './replyCreate/replyCreation';
 
 const AppNavigator = createStackNavigator(
   {
@@ -26,7 +27,10 @@ const AppNavigator = createStackNavigator(
     },
     Requests: {
       screen: RequestsView,
-    }
+    },
+    ReplyCreation: {
+      screen: ReplyCreation,
+    },
   },
   {
     defaultNavigationOptions: {
