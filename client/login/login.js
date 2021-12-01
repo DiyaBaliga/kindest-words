@@ -10,7 +10,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-import {SERVER_URL} from "./ip.js";
+import {SERVER_URL} from '../ip';
 
 
 export default function Login({ navigation }) {
