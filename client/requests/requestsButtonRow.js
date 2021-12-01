@@ -3,9 +3,9 @@ import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { NavigationContainer } from "@react-navigation/native";
 
 
-export default function RequestsButtonRow({navigation}) {
+export default function RequestsButtonRow({ navigation, request }) {
     const handleClick = () => {
-        navigation.navigate("WriteReplies", {isReply :true});
+        navigation.navigate('WriteReplies', {isReply: true, requestID: {request}});
     }
     
     return (
