@@ -48,7 +48,7 @@ export default function Login({ navigation }) {
   
   return (
     <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === "ios" ? "padding" : "height"}>
-      {<Image style={styles.image} source={require("./assets/kindest_words.png")}/>}
+      {<Image style={styles.image} source={require("../assets/kindest_words.png")}/>}
 
       <StatusBar style="auto" />
       <Text style={styles.errorDisplay}> {errorText} </Text>
