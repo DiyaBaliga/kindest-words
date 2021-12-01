@@ -3,16 +3,16 @@ import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { NavigationContainer } from "@react-navigation/native";
 
 
-export default function RequestsButtonRow() {
+export default function RequestsButtonRow({navigation}) {
     const handleClick = () => {
-        navigation.navigate('ReplyCreation');
+        navigation.navigate("WriteReplies");
     }
 
     return (
         <View style={styles.container}>
             <TouchableOpacity 
                 style={styles.button}
-                onClick={handleClick}
+                onPress={handleClick}
             >
                 <Text style={styles.buttonText}>
                     Reply

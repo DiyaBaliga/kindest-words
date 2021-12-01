@@ -6,6 +6,7 @@ import {SERVER_URL} from '../ip'
 export default function ReplyCreation() {
     const { width: windowWidth, height: windowHeight } = useWindowDimensions();
     const [content, setContent] = useState(null);
+    // const {state} = props.navigation;
 
     const postReply = () => {    
         axios.post(SERVER_URL + '/api/reply/', {

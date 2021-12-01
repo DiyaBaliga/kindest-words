@@ -5,7 +5,7 @@ import RequestsButtonRow from './requestsButtonRow';
 import axios from 'axios';
 import {SERVER_URL} from '../ip'
 
-export default function RequestsView() {
+export default function RequestsView({navigation}) {
     const [allRequests, setAllRequests] = useState([]);
     const [displayItem, setDisplayItem] = useState(0);
 
@@ -30,6 +30,7 @@ export default function RequestsView() {
                 />
                 <RequestsButtonRow
                     requestID={content[displayItem]._id}
+                    navigation={navigation}
                 />
             </SafeAreaView>
         </View>

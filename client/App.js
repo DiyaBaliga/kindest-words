@@ -28,7 +28,10 @@ const AppNavigator = createStackNavigator(
     Requests: {
       screen: RequestsView,
     },
-    ReplyCreation: {
+    WriteReplies: {
+      screen: ReplyCreation,
+    },
+    WriteRequests: {
       screen: ReplyCreation,
     },
   },
