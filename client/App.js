@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useEffect} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import RequestsView from './requestsView/requestsView';
+import RequestsView from './requestsView/requestsView.js';
 import ReplyCreation from './replyCreate/replyCreation.js';
 import Login from './login';
 import Regform from './Regform';
