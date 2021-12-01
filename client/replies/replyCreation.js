@@ -14,7 +14,7 @@ export default function ReplyCreation({ navigation }) {
             content: content,
             authorID: '6191825f72d3e52a83b89521',
             date: '-',
-            requestID: '61a32192144b0646fbc3e07a',
+            requestID: navigation.getParam('requestID').request,
         } : {
             content: content,
             authorID: '6191825f72d3e52a83b89521',
