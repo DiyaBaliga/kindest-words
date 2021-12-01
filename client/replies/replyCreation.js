@@ -6,34 +6,38 @@ import {SERVER_URL} from '../ip'
 export default function ReplyCreation({ navigation }) {
     const { width: windowWidth, height: windowHeight } = useWindowDimensions();
     const [content, setContent] = useState(null);
-    const { isReply } = navigation.state.params;
-
+    const styleColor = navigation.getParam('isReply') ? styles.replyColor : styles.requestColor;
 
     const postReply = () => {    
-        console.log(navigation.getParam('isReply'));
-        // axios.post(SERVER_URL + '/api/reply/', {
-        //     content: content,
-        //     authorID: '6191825f72d3e52a83b89521',
-        //     date: '-',
-        //     requestID: '61a32192144b0646fbc3e07a'
-        //   })
-        //   .then(function (response) {
-        //     // clear content after it's submitted
-        //     setContent("");
-        //   })
-        //   .catch(function (error) {
-        //     console.log(error);
-        //   });
+        const url = navigation.getParam('isReply') ? '/api/reply/' : '/api/request';
+        const postContents = navigation.getParam('isReply') ? {
+            content: content,
+            authorID: '6191825f72d3e52a83b89521',
+            date: '-',
+            requestID: '61a32192144b0646fbc3e07a',
+        } : {
+            content: content,
+            authorID: '6191825f72d3e52a83b89521',
+            date: '-',
+        };
+        axios.post(SERVER_URL + url, postContents)
+          .then(function (response) {
+            // clear content after it's submitted
+            setContent("");
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
     }
 
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                     {/* Text Input Area */}
             <SafeAreaView style={{width: windowWidth, justifyContent: 'center', alignItems:'center'}}>
-                <View style={styles.paper}>
+                <View style={[styles.paper, styleColor]}>
                     <TextInput
                         multiline
-                        style={styles.input}
+                        style={[styles.input, styleColor]}
                         onChangeText={setContent}
                         value={content}
                     />
@@ -42,10 +46,10 @@ export default function ReplyCreation({ navigation }) {
                         {/* Bottom button */}
                 <View style={styles.container}>
                     <TouchableOpacity 
-                        style={styles.button}
+                        style={[styles.button, styleColor]}
                         onPress={postReply}
                     >
-                        <Text style={styles.buttonText}>
+                        <Text style={[styles.buttonText, styleColor]}>
                             Send
                         </Text>
                     </TouchableOpacity>
@@ -58,8 +62,15 @@ export default function ReplyCreation({ navigation }) {
 }
 
 const styles = StyleSheet.create({
+    replyColor: {
+        backgroundColor: '#fce8f4',
+        color: '#d87dac',
+    },
+    requestColor: {
+        backgroundColor: '#d87dac',
+        color: '#fce8f4',
+    },
     paper: {
-      backgroundColor: '#fce8f4',
       padding: 20,
       borderRadius: 10,
       height: '87%',
@@ -73,7 +84,6 @@ const styles = StyleSheet.create({
         paddingTop: 0,
         paddingBottom: 0,
         fontSize: 20,
-        color: '#d87dac',
     },
     container:{
         justifyContent: "center",
@@ -86,11 +96,9 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: "500",
         padding: 5,
-        color: "#d87dac",
         textAlign: "center",
     },
     button: {
-        backgroundColor: '#f9e3ef',
         borderRadius: 4,
         width: "80%",
     }
