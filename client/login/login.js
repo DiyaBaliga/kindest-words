@@ -11,6 +11,8 @@ import {
   KeyboardAvoidingView
 } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
+import {SERVER_URL} from '../ip';
+
 
 export default function Login({ navigation }) {
   const [username, setUsername] = useState("");
@@ -25,7 +27,7 @@ export default function Login({ navigation }) {
   }
 
   const initiateLogin = () =>{
-    fetch("http://localhost:3000/api/login", {
+    fetch(SERVER_URL + "/api/login", {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -39,7 +41,7 @@ export default function Login({ navigation }) {
         setErrorText(data.error);
       }
       else if(data.user){
-        setErrorText("Congrats");
+        navigation.navigate('Home')
       }
     })
   }

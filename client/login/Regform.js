@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
 import React, { useState } from "react";
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { SERVER_URL } from '../ip';
 
 export default function Regform({ navigation }) {
   const [username, setUsername] = useState("");
@@ -12,7 +13,7 @@ export default function Regform({ navigation }) {
     navigation.goBack();
   }
   const initiateRegister = () =>{
-    fetch("http://localhost:3000/api/register", {
+    fetch(SERVER_URL + "/api/register", {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
