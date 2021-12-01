@@ -26,6 +26,9 @@ const AppNavigator = createStackNavigator(
 );
 
 const Navigator = createAppContainer(AppNavigator);
+import Login from './login';
+import Regform from './Regform';
+import Navigator from './routes/Stack';
 
 export default function App() {
   return (
@@ -37,6 +40,8 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
     alignItems: 'center',
+    flex: 1,
     justifyContent: 'center',
-  },
+    backgroundColor: '#0092ca',
+  }
 });
