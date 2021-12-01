@@ -5,9 +5,22 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { StyleSheet, Text, View } from 'react-native';
 import { RequestsView } from './requests';
 import { HomeScreen } from './homeScreen';
+import { Login, Regform } from './login';
 
 const AppNavigator = createStackNavigator(
   {
+    Login: {
+      screen: Login,
+      navigationOptions: {
+          headerShown: false
+      }
+    },
+    Regform: {
+        screen: Regform,
+        navigationOptions: {
+            headerShown: false
+        }
+    },
     Home: {
       screen: HomeScreen,
     },
@@ -26,9 +39,6 @@ const AppNavigator = createStackNavigator(
 );
 
 const Navigator = createAppContainer(AppNavigator);
-import Login from './login';
-import Regform from './Regform';
-import Navigator from './routes/Stack';
 
 export default function App() {
   return (

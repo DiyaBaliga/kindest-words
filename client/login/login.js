@@ -10,6 +10,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
+import { SERVER_URL } from "../ip";
 
 export default function Login({ navigation }) {
   const [username, setUsername] = useState("");
@@ -24,7 +25,7 @@ export default function Login({ navigation }) {
   }
 
   const initiateLogin = () =>{
-    fetch("http://localhost:3000/api/login", {
+    fetch(SERVER_URL, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -38,13 +39,13 @@ export default function Login({ navigation }) {
         setErrorText(data.error);
       }
       else if(data.user){
-        setErrorText("Congrats");
+        navigation.navigate('Home')
       }
     })
   }
   return (
     <View style={styles.container}>
-      {<Image style={styles.image} source={require("./assets/kindest_words.png")}/>}
+      {<Image style={styles.image} source={require("../assets/kindest_words.png")}/>}
 
       <StatusBar style="auto" />
       <Text style={styles.errorDisplay}> {errorText} </Text>
