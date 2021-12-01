@@ -18,6 +18,13 @@ export default function RequestsButtonRow() {
                     Reply
                 </Text>
             </TouchableOpacity>
+            <TouchableOpacity 
+                style={styles.button}
+            >
+                <Text style={styles.buttonText}>
+                    Report
+                </Text>
+            </TouchableOpacity>
         </View>
     );
 }
@@ -28,6 +35,8 @@ const styles = StyleSheet.create({
         alignContent: "center",
         alignItems: "center",
         paddingTop: 10,
+        flexDirection: 'row',
+        marginBottom: 10,
     },
     buttonText: {
         fontSize: 20,
@@ -39,6 +48,7 @@ const styles = StyleSheet.create({
     button: {
         backgroundColor: '#f9e3ef',
         borderRadius: 4,
-        width: "80%",
-    }
+        margin: 10,
+        width: '42%',
+    },
 });
