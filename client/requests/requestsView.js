@@ -5,7 +5,7 @@ import RequestsButtonRow from './requestsButtonRow';
 import axios from 'axios';
 import {SERVER_URL} from '../ip'
 
-export default function RequestsView() {
+export default function RequestsView({navigation}) {
     const [allRequests, setAllRequests] = useState([]);
 
     useEffect(()=> {
@@ -25,7 +25,9 @@ export default function RequestsView() {
                 <RequestsPaging
                     content={allRequests}
                 />
-                <RequestsButtonRow/>
+                <RequestsButtonRow
+                    navigation={navigation}
+                />
             </SafeAreaView>
         </View>
     );
