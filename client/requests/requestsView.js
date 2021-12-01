@@ -7,6 +7,7 @@ import {SERVER_URL} from '../ip'
 
 export default function RequestsView() {
     const [allRequests, setAllRequests] = useState([]);
+    const [displayItem, setDisplayItem] = useState(0);
 
     useEffect(()=> {
         axios
@@ -24,8 +25,12 @@ export default function RequestsView() {
             <SafeAreaView style={styles.scroll}>
                 <RequestsPaging
                     content={allRequests}
+                    displayItem={displayItem}
+                    setDisplayItem={setDisplayItem}
                 />
-                <RequestsButtonRow/>
+                <RequestsButtonRow
+                    requestID={content[displayItem]._id}
+                />
             </SafeAreaView>
         </View>
     );
