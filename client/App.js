@@ -50,6 +50,7 @@ const AppNavigator = createStackNavigator(
 const Navigator = createAppContainer(AppNavigator);
 
 export default function App() {
+  
   return (
     <Navigator/>
   );
