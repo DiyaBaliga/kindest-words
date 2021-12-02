@@ -33,6 +33,8 @@ In it, paste: DB = mongodb+srv://admin:eggert@cluster0.ckvf6.mongodb.net/myFirst
 
 ####'npm run dev'
 
+This starts the client and server simultaneously. In order to run the app on iOS, install Expo Go and scan the QR code that Expo gives you in your desktop browser.
+
 ## Notes
 
 Github users stsang333 and Spencer Sang are the same person. 
