@@ -6,12 +6,14 @@ import { StyleSheet, Text, View } from 'react-native';
 import { RequestsView } from './requests';
 import { HomeScreen } from './homeScreen';
 import { Login, Regform } from './login';
-import ReplyMailbox from './replies/replyMailbox';
-import ReplyCreation from './replies/replyCreation';
+import { ReplyMailbox, ReplyCreation} from './replies';
 import { UserContext, UserContextProvider } from './UserContext'
 
 const AppNavigator = createStackNavigator(
   {
+    ReplyMailbox: {
+      screen: ReplyMailbox,
+    },
     Login: {
       screen: Login,
       navigationOptions: {
@@ -36,9 +38,7 @@ const AppNavigator = createStackNavigator(
     WriteRequests: {
       screen: ReplyCreation,
     },
-    ReplyMailbox: {
-      screen: ReplyMailbox,
-    },
+
   },
   {
     defaultNavigationOptions: {

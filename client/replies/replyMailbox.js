@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { View, SafeAreaView, StyleSheet, useWindowDimensions } from 'react-native';
-import replySearchingMenu from './replySearchingMenu';
+import ReplySearchingMenu from './replySearchingMenu';
 import axios from 'axios';
 import {SERVER_URL} from '../ip'
 
@@ -11,6 +11,7 @@ export default function ReplyMailbox({navigation}) {
     const [searchTerms, setSearchTerms] = useState('');
 
     useEffect(() => {
+        console.log({searchTerms});
         // search the backend whenever the search terms are submitted
     }, [searchTerms])
 
@@ -24,7 +25,7 @@ export default function ReplyMailbox({navigation}) {
         .get(SERVER_URL + '/api/request/')
         .then((res) => {
           if (res.data) {
-            setAllRequests(res.data);
+            setAllReplies(res.data);
           }
         })
         .catch((err) => console.log(err));
@@ -33,7 +34,7 @@ export default function ReplyMailbox({navigation}) {
     return (
         <View style={styles.container}>
             <SafeAreaView style={styles.safeView}>
-                <replySearchingMenu
+                <ReplySearchingMenu
                     setSearchTerms={setSearchTerms}
                     setRequestFilter={setRequestFilter}
                 />
@@ -54,9 +55,8 @@ export default function ReplyMailbox({navigation}) {
 const styles = StyleSheet.create({
     container: {
         backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
         flex: 1,
+        width: '100%',
     },
     safeView: {
         flex:1,
