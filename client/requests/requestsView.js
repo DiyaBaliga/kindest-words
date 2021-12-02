@@ -27,6 +27,7 @@ export default function RequestsView({navigation}) {
                     content={allRequests}
                     displayItem={displayItem}
                     setDisplayItem={setDisplayItem}
+                    isRequest
                 />
                 <RequestsButtonRow
                     request={allRequests[displayItem] ? allRequests[displayItem]._id : null}
