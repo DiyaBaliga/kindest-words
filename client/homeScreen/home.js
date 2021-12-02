@@ -13,11 +13,11 @@ export default function HomeScreen({navigation}) {
             />
             <Button
                 title="Check Replies"
-                onPress={()=> navigation.navigate("Somewhere")}
+                onPress={()=> navigation.navigate("ReplyMailbox")}
             />
             <Button
                 title="Make Request"
-                onPress={()=> navigation.navigate("WriteRequests", {isReply :false})}
+                onPress={()=> navigation.navigate("WriteRequests", {params:  { user: '', isReply :false}})}
             />
         </View>
     );

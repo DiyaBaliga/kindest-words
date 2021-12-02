@@ -4,14 +4,15 @@ import {SERVER_URL} from '@env';
 import { NavigationContainer } from "@react-navigation/native";
 import { UserContext, UserContextProvider } from '../UserContext';
 
-export default function RequestsButtonRow({ navigation, request, author }) {
+
+export default function RequestsButtonRow({ navigation, request, requestAuthor }) {
     const state = useContext(UserContext);
     const handleClick = () => {
-        navigation.navigate('WriteReplies', {isReply: true, requestID: {request}});
+        navigation.navigate('WriteReplies', {isReply: true, requestID: {request}, requestAuthorID: {requestAuthor}});
     }
 
     const initiateReport = () => {
-        fetch(SERVER_URL + "/api/report/" + author, {
+        fetch(SERVER_URL + "/api/report/" + requestAuthor, {
             method: 'POST',
         })
         .then((response) => response.json())

@@ -17,6 +17,7 @@ export default function ReplyCreation({ navigation }) {
             authorID: state.user,
             date: '-',
             requestID: navigation.getParam('requestID').request,
+            requestAuthorID: navigation.getParam('requestAuthorID').requestAuthor,
         } : {
             content: content,
             authorID: state.user,

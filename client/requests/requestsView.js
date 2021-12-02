@@ -27,11 +27,12 @@ export default function RequestsView({navigation}) {
                     content={allRequests}
                     displayItem={displayItem}
                     setDisplayItem={setDisplayItem}
+                    isRequest
                 />
                 <RequestsButtonRow
                     request={allRequests[displayItem] ? allRequests[displayItem]._id : null}
-                    author={allRequests[displayItem] ? allRequests[displayItem].authorID : null}
                     navigation={navigation}
+                    requestAuthor={allRequests[displayItem] ? allRequests[displayItem].authorID: null}
                 />
             </SafeAreaView>
         </View>
