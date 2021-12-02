@@ -2,7 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import { ScrollView, StyleSheet, Animated, View, useWindowDimensions, Text } from 'react-native';
 import RequestDisplay from "./requestDisplay";
 
-export default function RequestsPaging({content, displayItem, setDisplayItem}) {
+export default function RequestsPaging({content, displayItem, setDisplayItem, isRequest}) {
     const scrollX = useRef(new Animated.Value(0));
     const { width: windowWidth } = useWindowDimensions();
 
@@ -31,7 +31,7 @@ export default function RequestsPaging({content, displayItem, setDisplayItem}) {
             >
         {content.map((request) => {
             return(
-                <RequestDisplay content={request.content} key={request._id} />
+                <RequestDisplay content={request.content} key={request._id} isRequest={isRequest} />
             )
             })
         }
