@@ -1,9 +1,10 @@
 import React, {useContext} from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import {SERVER_URL} from '../ip'
+import { NavigationContainer } from "@react-navigation/native";
 
-export default function RequestsButtonRow() {
 
+export default function RequestsButtonRow({navigation}) {
     const initiateReport = () => {
         fetch(SERVER_URL + "/api/report/" + user, {
             method: 'POST',
@@ -11,10 +12,15 @@ export default function RequestsButtonRow() {
         .then((response) => response.json())
     }
 
+    const handleClick = () => {
+        navigation.navigate("WriteReplies");
+    }
+
     return (
         <View style={styles.container}>
             <TouchableOpacity 
                 style={styles.button}
+                onPress={handleClick}
             >
                 <Text style={styles.buttonText}>
                     Reply

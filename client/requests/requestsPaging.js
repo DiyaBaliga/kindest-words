@@ -1,28 +1,32 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import { ScrollView, StyleSheet, Animated, View, useWindowDimensions, Text } from 'react-native';
 import RequestDisplay from "./requestDisplay";
 
-export default function RequestsPaging({content}) {
-    const scrollX = useRef(new Animated.Value(0)).current;
-    const { width: windowWidth, height: windowHeight } = useWindowDimensions();
+export default function RequestsPaging({content, displayItem, setDisplayItem}) {
+    const scrollX = useRef(new Animated.Value(0));
+    const { width: windowWidth } = useWindowDimensions();
 
     return (
         <ScrollView
             horizontal={true}
             pagingEnabled
             showsHorizontalScrollIndicator={false}
-            onScroll={() => Animated.event(
+            onScroll={(event) => {
+                setDisplayItem(parseInt(event.nativeEvent.contentOffset.x / windowWidth));
+                return (
+                Animated.event(
                 [
-                {
-                nativeEvent: {
-                    contentOffset: {
-                    x: scrollX
+                    {
+                        nativeEvent: {
+                            contentOffset: {
+                            x: scrollX.current
+                            }
+                        }
                     }
-                }
-                }
                 ],
                 {useNativeDriver: true}
-            )}
+                ));
+            }}
             scrollEventThrottle={1}
             >
         {content.map((request) => {

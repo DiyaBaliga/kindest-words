@@ -7,6 +7,7 @@ import { RequestsView } from './requests';
 import { HomeScreen } from './homeScreen';
 import { Login, Regform } from './login';
 import { UserContext, UserContextProvider } from './UserContext'
+//import ReplyCreation, { replyCreation } from './replyCreate/replyCreation';
 
 const AppNavigator = createStackNavigator(
   {
@@ -27,7 +28,13 @@ const AppNavigator = createStackNavigator(
     },
     Requests: {
       screen: RequestsView,
-    }
+    },
+    /*WriteReplies: {
+      screen: ReplyCreation,
+    },
+    WriteRequests: {
+      screen: ReplyCreation,
+    },*/
   },
   {
     defaultNavigationOptions: {
@@ -44,6 +51,7 @@ const Navigator = createAppContainer(AppNavigator);
 export default function App() {
   const [user, setUser] = useState("");
   const value = { user, setUser };
+  
   return (
     <UserContextProvider>
       <Navigator/>
