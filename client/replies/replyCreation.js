@@ -1,23 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { StyleSheet, View, SafeAreaView, useWindowDimensions, TextInput, TouchableWithoutFeedback, Keyboard, TouchableOpacity, Text } from 'react-native';
 import axios from 'axios';
 import {SERVER_URL} from '../ip'
+import { UserContext, UserContextProvider } from '../UserContext';
 
 export default function ReplyCreation({ navigation }) {
     const { width: windowWidth, height: windowHeight } = useWindowDimensions();
     const [content, setContent] = useState(null);
     const styleColor = navigation.getParam('isReply') ? styles.replyColor : styles.requestColor;
+    const state = useContext(UserContext);
 
     const postReply = () => {    
         const url = navigation.getParam('isReply') ? '/api/reply/' : '/api/request';
         const postContents = navigation.getParam('isReply') ? {
             content: content,
-            authorID: '6191825f72d3e52a83b89521',
+            authorID: state.user,
             date: '-',
             requestID: navigation.getParam('requestID').request,
         } : {
             content: content,
-            authorID: '6191825f72d3e52a83b89521',
+            authorID: state.user,
             date: '-',
         };
         axios.post(SERVER_URL + url, postContents)
@@ -31,33 +33,34 @@ export default function ReplyCreation({ navigation }) {
     }
 
     return (
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-                    {/* Text Input Area */}
-            <SafeAreaView style={{width: windowWidth, justifyContent: 'center', alignItems:'center'}}>
-                <View style={[styles.paper, styleColor]}>
-                    <TextInput
-                        multiline
-                        style={[styles.input, styleColor]}
-                        onChangeText={setContent}
-                        value={content}
-                    />
-                </View>
+        <UserContextProvider>
+            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                        {/* Text Input Area */}
+                <SafeAreaView style={{width: windowWidth, justifyContent: 'center', alignItems:'center'}}>
+                    <View style={[styles.paper, styleColor]}>
+                        <TextInput
+                            multiline
+                            style={[styles.input, styleColor]}
+                            onChangeText={setContent}
+                            value={content}
+                        />
+                    </View>
 
-                        {/* Bottom button */}
-                <View style={styles.container}>
-                    <TouchableOpacity 
-                        style={[styles.button, styleColor]}
-                        onPress={postReply}
-                    >
-                        <Text style={[styles.buttonText, styleColor]}>
-                            Send
-                        </Text>
-                    </TouchableOpacity>
-                </View>
+                            {/* Bottom button */}
+                    <View style={styles.container}>
+                        <TouchableOpacity 
+                            style={[styles.button, styleColor]}
+                            onPress={postReply}
+                        >
+                            <Text style={[styles.buttonText, styleColor]}>
+                                Send
+                            </Text>
+                        </TouchableOpacity>
+                    </View>
 
-            </SafeAreaView>
-        </TouchableWithoutFeedback>
-
+                </SafeAreaView>
+            </TouchableWithoutFeedback>
+        </UserContextProvider>
     );
 }
 
