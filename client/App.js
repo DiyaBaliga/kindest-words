@@ -30,12 +30,12 @@ const AppNavigator = createStackNavigator(
     Requests: {
       screen: RequestsView,
     },
-    /*WriteReplies: {
+    WriteReplies: {
       screen: ReplyCreation,
     },
     WriteRequests: {
       screen: ReplyCreation,
-    },*/
+    },
   },
   {
     defaultNavigationOptions: {

@@ -30,6 +30,7 @@ export default function RequestsView({navigation}) {
                 />
                 <RequestsButtonRow
                     request={allRequests[displayItem] ? allRequests[displayItem]._id : null}
+                    author={allRequests[displayItem] ? allRequests[displayItem].authorID : null}
                     navigation={navigation}
                 />
             </SafeAreaView>
