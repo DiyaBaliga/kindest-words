@@ -1,21 +1,21 @@
-import React, {useContext} from 'react';
+import React, {useEffect, useContext} from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import {SERVER_URL} from '../ip'
 import { NavigationContainer } from "@react-navigation/native";
 
 
-export default function RequestsButtonRow({navigation}) {
+export default function RequestsButtonRow({ navigation, request }) {
+    const handleClick = () => {
+        navigation.navigate('WriteReplies', {isReply: true, requestID: {request}});
+    }
+
     const initiateReport = () => {
         fetch(SERVER_URL + "/api/report/" + user, {
             method: 'POST',
         })
         .then((response) => response.json())
     }
-
-    const handleClick = () => {
-        navigation.navigate("WriteReplies");
-    }
-
+    
     return (
         <View style={styles.container}>
             <TouchableOpacity 

@@ -8,6 +8,7 @@ import { HomeScreen } from './homeScreen';
 import { Login, Regform } from './login';
 import { UserContext, UserContextProvider } from './UserContext'
 //import ReplyCreation, { replyCreation } from './replyCreate/replyCreation';
+import ReplyCreation from './replies/replyCreation';
 
 const AppNavigator = createStackNavigator(
   {
