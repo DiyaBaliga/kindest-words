@@ -38,7 +38,6 @@ const AppNavigator = createStackNavigator(
     WriteRequests: {
       screen: ReplyCreation,
     },
-
   },
   {
     defaultNavigationOptions: {
