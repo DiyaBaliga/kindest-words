@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity, StyleSheet, Button, Pressable } from 'rea
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons'; 
 import { FontAwesome5 } from '@expo/vector-icons';
+import MusicProvider from '../MusicProvider';
 
 
 export default function HomeScreen({navigation}) {
@@ -14,33 +15,36 @@ export default function HomeScreen({navigation}) {
 
 
     return (
-        <View style={styles.container}>
-            <Pressable onPress={toggle} style={styles.volumeButtonStyles}>
-                <FontAwesome5 name={isPlaying ? "volume-mute" : "volume-down"} size={24} color="white" />
-            </Pressable>
-            <Pressable style={styles.button} onPress={()=> navigation.navigate("Requests")}>
-                <MaterialCommunityIcons name="message-reply-text" size={70} color="white" />
-                <Text style={styles.buttonText}>Check Requests</Text>
-            </Pressable>
-            <Pressable style={styles.button} onPress={()=> navigation.navigate("ReplyMailbox")}>
-                <Ionicons name="mail-unread" size={70} color="white" />
-                <Text style={styles.buttonText}>Check Replies</Text>
-            </Pressable>
-            <Pressable style={styles.button} onPress={()=> navigation.navigate("WriteRequests")}>
-                <Ionicons name="create" size={70} color="white" />
-                <Text style={styles.buttonText}>Make Request</Text>
-            </Pressable>
-        </View>
+        <>
+            <View style={styles.container}>
+                <Pressable onPress={toggle} style={styles.volumeButtonStyles}>
+                    <FontAwesome5 name={isPlaying ? "volume-mute" : "volume-down"} size={24} color="white" />
+                </Pressable>
+                <Pressable style={styles.button} onPress={()=> navigation.navigate("Requests")}>
+                    <MaterialCommunityIcons name="message-reply-text" size={70} color="white" />
+                    <Text style={styles.buttonText}>Check Requests</Text>
+                </Pressable>
+                <Pressable style={styles.button} onPress={()=> navigation.navigate("ReplyMailbox")}>
+                    <Ionicons name="mail-unread" size={70} color="white" />
+                    <Text style={styles.buttonText}>Check Replies</Text>
+                </Pressable>
+                <Pressable style={styles.button} onPress={()=> navigation.navigate("WriteRequests")}>
+                    <Ionicons name="create" size={70} color="white" />
+                    <Text style={styles.buttonText}>Make Request</Text>
+                </Pressable>
+            </View>
+            <MusicProvider isPlaying={isPlaying} setIsPlaying={isPlaying}/>
+        </>
     );
 }
 
 const styles = StyleSheet.create({
     container:{
-        flex: 1,
         justifyContent: "space-evenly",
         alignContent: "center",
         alignItems: "center",
         paddingTop: 10,
+        flex: 1,
     },
     buttonText: {
         fontSize: 20,

@@ -6,26 +6,32 @@ import { Ionicons } from '@expo/vector-icons';
 
 const SampleTrack = require('./music_resources/lofi.mp3');
 
-export default function MusicProvider() {
+export default function MusicProvider({isPlaying, setIsPlaying}) {
   const loaded = useRef(false);
   const loading = useRef(false);
-  const [isPlaying, setIsPlaying] = useState(true);
+  const isFirstLoad = useRef(true);
   const music = useRef(new Audio.Sound());
 
   useEffect(() => {
     LoadAudio();
   }, []);
+
+  useEffect(() => {
+    if(isFirstLoad.current) {
+      isFirstLoad.current = false;
+    } else {
+      PlayPauseAudio();
+    }
+  }, [isPlaying])
   
   const PlayPauseAudio = async () => {
     try {
       const status = await music.current.getStatusAsync();
       if (status.isLoaded) {
-        if (status.isPlaying === false) {
+        if (isPlaying === true) {
           music.current.playAsync();
-          setIsPlaying(true);
         } else {
           music.current.pauseAsync();
-          setIsPlaying(false);
         }
       }
     } catch (error) {}
@@ -42,7 +48,7 @@ export default function MusicProvider() {
         } else {
           loading.current = false;
           loaded.current = true;
-          setIsPlaying(false);
+          setIsPlaying(result.isPlaying);
         }
       } catch (error) {
         loading.current = false;
@@ -53,23 +59,7 @@ export default function MusicProvider() {
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.AudioPlayer}>
-        {!loading.current && (
-          <>
-            {loaded.current && (
-              <TouchableOpacity style={styles.AudioPlayer} onPress={PlayPauseAudio}>
-                {isPlaying ? (
-                  <Ionicons name="pause-circle-outline" size={48} color="#ff1188"/>
-                ) : (
-                  <Ionicons name="play-circle-outline" size={48} color="#ff1188"/>
-                )}
-              </TouchableOpacity>
-            )}
-          </>
-        )}
-      </View>
-    </View>
+    <></>
   );
 }
 
