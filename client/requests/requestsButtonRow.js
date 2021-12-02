@@ -1,12 +1,12 @@
 import React, {useEffect, useContext} from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import {SERVER_URL} from '../ip'
+import {SERVER_URL} from '@env';
 import { NavigationContainer } from "@react-navigation/native";
 
 
-export default function RequestsButtonRow({ navigation, request }) {
+export default function RequestsButtonRow({ navigation, request, requestAuthor }) {
     const handleClick = () => {
-        navigation.navigate('WriteReplies', {isReply: true, requestID: {request}});
+        navigation.navigate('WriteReplies', {isReply: true, requestID: {request}, requestAuthorID: {requestAuthor}});
     }
 
     const initiateReport = () => {

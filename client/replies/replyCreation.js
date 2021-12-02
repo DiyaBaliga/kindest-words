@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { StyleSheet, View, SafeAreaView, useWindowDimensions, TextInput, TouchableWithoutFeedback, Keyboard, TouchableOpacity, Text } from 'react-native';
 import axios from 'axios';
-import {SERVER_URL} from '../ip'
+import {SERVER_URL} from '@env'
 import { UserContext, UserContextProvider } from '../UserContext';
 
 export default function ReplyCreation({ navigation }) {
@@ -17,6 +17,7 @@ export default function ReplyCreation({ navigation }) {
             authorID: state.user,
             date: '-',
             requestID: navigation.getParam('requestID').request,
+            requestAuthorID: navigation.getParam('requestAuthorID').requestAuthor,
         } : {
             content: content,
             authorID: state.user,

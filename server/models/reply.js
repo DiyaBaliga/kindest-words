@@ -21,6 +21,10 @@ const replySchema = new Schema({
         type: Schema.Types.ObjectId,
         required: true,
         ref: "Request"
+    },
+    requestAuthorID: {
+        type: Schema.Types.ObjectId,
+        required: true,
     }
 });
 
