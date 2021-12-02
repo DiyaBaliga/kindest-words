@@ -3,7 +3,7 @@ import { RequestsPaging } from '../requests';
 import { View, SafeAreaView, StyleSheet, useWindowDimensions } from 'react-native';
 import ReplySearchingMenu from './replySearchingMenu';
 import axios from 'axios';
-import {SERVER_URL} from '../ip'
+import {SERVER_URL} from '@env'
 import { UserContext, UserContextProvider } from '../UserContext';
 
 
@@ -16,8 +16,7 @@ export default function ReplyMailbox({ navigation }) {
     const isFirstLoad = useRef(true);
 
     const searchForReplies = () => {
-        console.log('searching all the replies');
-        const url = SERVER_URL + '/api/reply/keyword/' + searchTerms + '/'+ '61a8327e4bf00d58dc5e62d9';
+        const url = SERVER_URL + '/api/reply/keywordRequestAuthor/' + searchTerms + '/'+ state.user;
         //state.user
 
         axios
@@ -25,16 +24,14 @@ export default function ReplyMailbox({ navigation }) {
         .then((res) => {
           if (res.data) {
             setAllReplies(res.data);
-            console.log(res.data);
           }
         })
         .catch((err) => console.log(err));
     }
 
     const fetchAllReplies = () => {
-        console.log('fetching all the replies');
         axios
-        .get(SERVER_URL + '/api/reply/')
+        .get(SERVER_URL + '/api/reply/requestAuthor/' + state.user)
         .then((res) => {
           if (res.data) {
             setAllReplies(res.data);
@@ -53,19 +50,21 @@ export default function ReplyMailbox({ navigation }) {
     }, [searchTerms])
 
     return (
-        <View style={styles.container}>
-            <SafeAreaView style={styles.safeView}>
-                <ReplySearchingMenu
-                    setSearchTerms={setSearchTerms}
-                    setRequestFilter={setRequestFilter}
-                />
-                <RequestsPaging
-                    content={allReplies}
-                    displayItem={displayItem}
-                    setDisplayItem={setDisplayItem}
-                />
-            </SafeAreaView>
-        </View>
+        <UserContextProvider>
+            <View style={styles.container}>
+                <SafeAreaView style={styles.safeView}>
+                    <ReplySearchingMenu
+                        setSearchTerms={setSearchTerms}
+                        setRequestFilter={setRequestFilter}
+                    />
+                    <RequestsPaging
+                        content={allReplies}
+                        displayItem={displayItem}
+                        setDisplayItem={setDisplayItem}
+                    />
+                </SafeAreaView>
+            </View>
+        </UserContextProvider>
     );
 }
 

@@ -11,14 +11,14 @@ import { UserContext, UserContextProvider } from './UserContext'
 
 const AppNavigator = createStackNavigator(
   {
-    ReplyMailbox: {
-      screen: ReplyMailbox,
-    },
     Login: {
       screen: Login,
       navigationOptions: {
           headerShown: false
       }
+    },
+    ReplyMailbox: {
+      screen: ReplyMailbox,
     },
     Regform: {
         screen: Regform,
