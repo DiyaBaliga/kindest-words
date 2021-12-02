@@ -1,6 +1,6 @@
 import React, {useEffect, useContext} from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import {SERVER_URL} from '../ip'
+import {SERVER_URL} from '@env';
 import { NavigationContainer } from "@react-navigation/native";
 import { UserContext, UserContextProvider } from '../UserContext';
 

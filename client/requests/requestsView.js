@@ -3,7 +3,7 @@ import { View, SafeAreaView, StyleSheet, useWindowDimensions } from 'react-nativ
 import RequestsPaging from './requestsPaging';
 import RequestsButtonRow from './requestsButtonRow';
 import axios from 'axios';
-import {SERVER_URL} from '../ip'
+import {SERVER_URL} from '@env'
 
 export default function RequestsView({navigation}) {
     const [allRequests, setAllRequests] = useState([]);

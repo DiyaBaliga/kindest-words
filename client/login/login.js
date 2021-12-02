@@ -11,7 +11,7 @@ import {
   KeyboardAvoidingView
 } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-import {SERVER_URL} from '../ip';
+import {SERVER_URL} from '@env';
 import { UserContext, UserContextProvider } from '../UserContext';
 
 export default function Login({ navigation }) {
