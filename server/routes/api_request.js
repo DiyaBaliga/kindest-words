@@ -23,6 +23,17 @@ router.get('/request/author/:author', (req, res, next) => {
     .catch(next);
 });
 
+// Get by request keyword and author id
+router.get('/request/keyword/:keyword/:author', (req, res, next) => {
+  Request.find( {
+    $and: [
+      { authorID: req.params.author },
+      { $text: { $search: req.params.keyword } }
+   ] } )
+  .then((data) => res.json(data))
+  .catch(next);
+})
+
 // Post a request
 router.post('/request', (req, res, next) => {
   if (req.body.content) {

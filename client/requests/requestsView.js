@@ -3,10 +3,11 @@ import { View, SafeAreaView, StyleSheet, useWindowDimensions } from 'react-nativ
 import RequestsPaging from './requestsPaging';
 import RequestsButtonRow from './requestsButtonRow';
 import axios from 'axios';
-import {SERVER_URL} from '../ip'
+import {SERVER_URL} from '@env'
 
-export default function RequestsView() {
+export default function RequestsView({navigation}) {
     const [allRequests, setAllRequests] = useState([]);
+    const [displayItem, setDisplayItem] = useState(0);
 
     useEffect(()=> {
         axios
@@ -24,8 +25,15 @@ export default function RequestsView() {
             <SafeAreaView style={styles.scroll}>
                 <RequestsPaging
                     content={allRequests}
+                    displayItem={displayItem}
+                    setDisplayItem={setDisplayItem}
+                    isRequest
                 />
-                <RequestsButtonRow/>
+                <RequestsButtonRow
+                    request={allRequests[displayItem] ? allRequests[displayItem]._id : null}
+                    navigation={navigation}
+                    requestAuthor={allRequests[displayItem] ? allRequests[displayItem].authorID: null}
+                />
             </SafeAreaView>
         </View>
     );
@@ -36,6 +44,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
+        flex: 1,
     },
     scroll: {
         flex:1,
