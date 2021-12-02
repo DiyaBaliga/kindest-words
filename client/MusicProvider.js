@@ -15,12 +15,7 @@ export default function MusicProvider() {
   useEffect(() => {
     LoadAudio();
   }, []);
-
-  const getPlayState = async () => {
-    const playState = await music.current.getStatusAsync();
-    return playState;
-  }
-
+  
   const PlayPauseAudio = async () => {
     try {
       const status = await music.current.getStatusAsync();
