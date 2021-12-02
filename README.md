@@ -15,9 +15,13 @@ vent or ask for advice, without judgement. Users anonymously make posts, similar
 
 ## Running the App
 
-Install node.js by running the command:
+Install node.js by running the following command on linux:
 #### `sudo apt install nodejs`
 in your home directory.
+
+### OR
+
+if on macOS or Windows, go to https://nodejs.org/en/ and install node.js
 
 Clone the repository:
 
