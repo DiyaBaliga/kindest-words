@@ -43,7 +43,7 @@ export default function Login({ navigation }) {
         setErrorText(data.error);
       }
       else if(data.user){
-        state.setUser(data.user)
+        state.setUser(data.user, username)
         navigation.navigate('Home')
       }
     })

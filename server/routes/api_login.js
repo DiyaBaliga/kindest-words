@@ -64,7 +64,6 @@ router.post('/login', (req, res, next) => {
  }); 
 
 router.post('/report/:id', (req, res, next) => {
-  console.log(req.params.id)
   User.findOneAndUpdate(
     {"_id" : req.params.id},
     { "flagged" : true },
