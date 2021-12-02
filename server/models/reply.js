@@ -24,6 +24,9 @@ const replySchema = new Schema({
     }
 });
 
+// Indexing for searching content later
+replySchema.index({content: "text"})
+
 // Create model for Message
 const Reply = mongoose.model('reply', replySchema);
 

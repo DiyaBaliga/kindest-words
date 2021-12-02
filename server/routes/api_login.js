@@ -12,6 +12,7 @@ router.post('/register', (req, res, next) => {
         });
       }
       else{
+        req.body.flagged = false;
         User.create(req.body)
           .then((data) => res.json(data))
           .catch(next);
@@ -36,9 +37,16 @@ router.post('/login', (req, res, next) => {
           })
         }
         else if(user[0].password == req.body.password){
-          res.json({
-            user: user[0]._id,
-          });
+          if(user[0].flagged){
+            res.json({
+              error: user[0].username + " was reported for misconduct."
+            });
+          }
+          else{
+            res.json({
+              user: user[0]._id,
+            });
+          }
         }
         else{
           res.json({
@@ -55,5 +63,12 @@ router.post('/login', (req, res, next) => {
   }
  }); 
 
+router.post('/report/:id', (req, res, next) => {
+  User.find({ _id: req.params.id })
+    .then(user => {
+      user[0].flagged = true;
+    })
+    .catch(next);
+});
 
 module.exports = router;

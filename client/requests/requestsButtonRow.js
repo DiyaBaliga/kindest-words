@@ -1,11 +1,19 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useContext} from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import {SERVER_URL} from '../ip'
 import { NavigationContainer } from "@react-navigation/native";
 
 
-export default function RequestsButtonRow({ request }) {
+export default function RequestsButtonRow({ navigation, request }) {
     const handleClick = () => {
         navigation.navigate('WriteReplies', {isReply: true, requestID: {request}});
+    }
+
+    const initiateReport = () => {
+        fetch(SERVER_URL + "/api/report/" + user, {
+            method: 'POST',
+        })
+        .then((response) => response.json())
     }
     
     return (
@@ -21,7 +29,7 @@ export default function RequestsButtonRow({ request }) {
             <TouchableOpacity 
                 style={styles.button}
             >
-                <Text style={styles.buttonText}>
+                <Text style={styles.buttonText} onPress={initiateReport}>
                     Report
                 </Text>
             </TouchableOpacity>

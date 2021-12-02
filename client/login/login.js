@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   StyleSheet,
   Text,
@@ -12,12 +12,14 @@ import {
 } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import {SERVER_URL} from '../ip';
-
+import { UserContext, UserContextProvider } from '../UserContext';
 
 export default function Login({ navigation }) {
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorText, setErrorText] = useState("");
+  const state = useContext(UserContext);
 
   const pressHandler = () => {
     setUsername("");
@@ -41,12 +43,14 @@ export default function Login({ navigation }) {
         setErrorText(data.error);
       }
       else if(data.user){
+        state.setUser(data.user)
         navigation.navigate('Home')
       }
     })
   }
   
   return (
+    <UserContextProvider>
     <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === "ios" ? "padding" : "height"}>
       {<Image style={styles.image} source={require("../assets/kindest_words.png")}/>}
 
@@ -81,6 +85,7 @@ export default function Login({ navigation }) {
         <Text style={styles.createAccount}>Create an account</Text>
       </TouchableOpacity>
     </KeyboardAvoidingView>
+    </UserContextProvider>
   );
 }
 

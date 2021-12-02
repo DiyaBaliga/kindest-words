@@ -10,10 +10,10 @@ const userSchema = new Schema({
       type: String,
       required: [true, 'The password text field is required'],
     },
-    // flags: {
-    //   type: Number,
-    //   required: [true, 'The flags text field is required'],
-    // },
+    flagged: {
+      type: Boolean,
+      required: [true, 'The flags text field is required'],
+    },
 });
 
 const User = mongoose.model('user', userSchema)

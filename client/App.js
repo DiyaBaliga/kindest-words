@@ -1,13 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
-import React, {useEffect} from 'react';
+import React, {useEffect, useState, createContext} from 'react';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { StyleSheet, Text, View } from 'react-native';
 import { RequestsView } from './requests';
 import { HomeScreen } from './homeScreen';
 import { Login, Regform } from './login';
-import ReplyCreation from './replyCreate/replyCreation';
 import ReplyMailbox from './replies/replyMailbox';
+import ReplyCreation from './replies/replyCreation';
+import { UserContext, UserContextProvider } from './UserContext'
 
 const AppNavigator = createStackNavigator(
   {
@@ -29,15 +30,19 @@ const AppNavigator = createStackNavigator(
     Requests: {
       screen: RequestsView,
     },
-    WriteReplies: {
+    /*WriteReplies: {
       screen: ReplyCreation,
     },
     WriteRequests: {
       screen: ReplyCreation,
+<<<<<<< HEAD
     },
     ReplyMailbox: {
       screen: ReplyMailbox,
     },
+=======
+    },*/
+>>>>>>> main
   },
   {
     defaultNavigationOptions: {
@@ -52,9 +57,12 @@ const AppNavigator = createStackNavigator(
 const Navigator = createAppContainer(AppNavigator);
 
 export default function App() {
+  const [user, setUser] = useState("");
+  const value = { user, setUser };
   
   return (
-    <Navigator/>
+    <UserContextProvider>
+      <Navigator/>
+    </UserContextProvider>
   );
 }
-

@@ -28,6 +28,17 @@ router.get('/reply/:id', (req, res, next) => {
     .then((data) => res.json(data))
     .catch(next);
 });
+
+// Get by reply keyword and author id
+router.get('/reply/keyword/:keyword/:author', (req, res, next) => {
+  Reply.find( {
+    $and: [
+      { authorID: req.params.author },
+      { $text: { $search: req.params.keyword } }
+   ] } )
+  .then((data) => res.json(data))
+  .catch(next);
+})
   
 //Delete by reply ID
 router.delete('/reply/:id', (req, res, next) => {
