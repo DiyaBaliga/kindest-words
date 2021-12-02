@@ -16,17 +16,17 @@ vent or ask for advice, without judgement. Users anonymously make posts, similar
 ## Running the App
 
 Install node.js by running the command:
-#### sudo apt install nodejs
+#### `sudo apt install nodejs`
 in your home directory.
 
 Clone the repository:
 
-#### git clone https://github.com/DiyaBaliga/kindest-words
+#### `git clone https://github.com/DiyaBaliga/kindest-words`
 
-#### cd kindest-words
+#### `cd kindest-words`
 
 Then run
-#### npm install
+#### `npm install`
 
 ### In order to run the app
 
@@ -36,12 +36,17 @@ In it, paste: SERVER_URL = http://[insert your public ip address]:3000
 Create a .env file in the server folder. This will allow you to connect to the database.
 In it, paste: DB = mongodb+srv://admin:eggert@cluster0.ckvf6.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
 
-#### cd server
+#### `cd server`
 
-#### npm run dev
+#### `npm run dev`
 
 This starts the client and server simultaneously. In order to run the app on iOS, install Expo Go and scan the QR code that Expo gives you in your desktop browser.
 
 ## Notes
 
-Github users stsang333 and Spencer Sang are the same person. 
+Github users stsang333 and Spencer Sang are the same person.
+
+This app takes inspiration from a Steam game called "Kind Words (lo fi chill beats to write to)".
+
+The url to the background music is
+   https://www.youtube.com/watch?v=1tUPFQ54gqc&t=726s
