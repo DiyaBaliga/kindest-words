@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useEffect} from 'react';
-import { StyleSheet, Text, View, Button, ActivityIndicator, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native';
 import RequestsView from './requestsView/requestsView';
 import { Audio } from 'expo-av';
 import Constants from 'expo-constants';
@@ -62,13 +62,11 @@ export default function App() {
     <View style={styles.container}>
       <View style={styles.AudioPlayer}>
         {Loading ? (
-          <ActivityIndicator size={'small'} color={'red'} />
+          <></>
         ) : (
           <>
             {Loaded === false ? (
               <>
-                <ActivityIndicator />
-                <Text>Loading Song</Text>{' '}
               </>
             ) : (
               <TouchableOpacity style={styles.AudioPlayer} onPress={PlayPauseAudio}>
