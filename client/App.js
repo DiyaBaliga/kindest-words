@@ -7,6 +7,7 @@ import { RequestsView } from './requests';
 import { HomeScreen } from './homeScreen';
 import { Login, Regform } from './login';
 import ReplyCreation from './replyCreate/replyCreation';
+import ReplyMailbox from './replies/replyMailbox';
 
 const AppNavigator = createStackNavigator(
   {
@@ -33,6 +34,9 @@ const AppNavigator = createStackNavigator(
     },
     WriteRequests: {
       screen: ReplyCreation,
+    },
+    ReplyMailbox: {
+      screen: ReplyMailbox,
     },
   },
   {
